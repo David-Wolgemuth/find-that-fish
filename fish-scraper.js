@@ -20,7 +20,7 @@ function fishConstructor ()
                 var name = $(this).attr("alt");
                 var form = $(this).parent().next();  // All Children Of Form
                 var cls = form.find(":input[name='classnum']").val();
-                return { image: img, name: name, class: cls };
+                return { image: img, name: name, id: cls };
             }).get();
         })
         .then(callback);
@@ -40,7 +40,7 @@ function fishConstructor ()
                 var cls = getParameterByName("classnum", link);
                 var src = $(this).attr("src");
                 var name = $(this).attr("alt");
-                return { image: src, ord: ord, class: cls, name: name };
+                return { image: src, id: ord, class: cls, name: name };
             }).get();
         })
         .then(callback);
@@ -60,7 +60,7 @@ function fishConstructor ()
                 var family = getParameterByName("famcode", link);
                 var name = a.text().trim();
                 var src = $(this).attr("src");
-                return { image: src, family: family, name: name };
+                return { image: src, id: family, name: name };
             }).get();
         })
         .then(callback);
