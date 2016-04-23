@@ -1,0 +1,14 @@
+
+
+.button-row {
+	width: 99%;
+	display: block;
+	height: 160px;
+	overflow-x: auto;
+	overflow-y: hidden;
+	white-space: nowrap;
+}
+.button-block {
+	display: inline-block;
+	margin-left: 1%;
+}

@@ -1,17 +1,24 @@
 
-fishModule.controller("questionsController", function ($scope) {
-    this.question = {
-        text: "Find Order"
+fishModule.controller("fishController", function(fishFactory) {
+    var ctrl = this;
+
+    ctrl.classes = [];
+    ctrl.orders = [];
+    fishFactory.classes(function (classes) {
+        ctrl.classes = classes;
+    });
+
+    ctrl.clickedClass = function (cls) {
+        console.log(cls);
+        fishFactory.ordersByClassId(cls.id, function (orders) {
+            ctrl.orders = orders;
+        });
     };
-    this.hello = "BALAH"
-    this.options = [{
-        text: "Myliobatiformes",
-        image: "http://fishbase.org/identification/pics/O_4_65.jpg"
-    }, {
-        text: "Rajiformes",
-        image: "http://fishbase.org/identification/pics/O_4_14.jpg"
-    }, {
-        text: "Torpediniformes",
-        image: "http://fishbase.org/identification/pics/O_4_13.jpg"
-    }];
+
+    ctrl.clickedOrder = function (order) {
+        fishFactory.familiesByOrderId(order.id, function(families) {
+            ctrl.families = families;
+        })
+    }
+
 });

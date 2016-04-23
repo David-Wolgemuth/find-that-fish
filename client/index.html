@@ -6,17 +6,29 @@
 		<script src="main.js"></script>
 		<script src="factories.js"></script>
 		<script src="controllers.js"></script>
+		<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
-<body ng-controller="questionsController as qc">
+<body ng-controller="fishController as fc">
 
-{{ qc.hello }}
+{{ fc.hello }}
 
 <div id="content">
-	<h3 ng-bind="qc.question.text"></h3>
-	<div id="options">
-		<div ng-repeat="opt in qc.options">
-			<p ng-bind="opt.text"></p>
-			<img ng-src="{{ opt.image }}" alt="">
+	<h3>Choose a Class:</h3>
+	<div class="button-row">
+		<div class="button-block" ng-repeat="cls in fc.classes">
+			<button ng-click="fc.clickedClass(cls)"><img ng-src="http://fishbase.org/identification/{{ cls.image }}" alt="{{ cls.name }}" height="140"></button>
+		</div>
+	</div>
+	<h3>Choose an Order:</h3>
+	<div class="button-row">
+		<div class="button-block" ng-repeat="order in fc.orders">
+			<button><img ng-src="http://fishbase.org/identification/{{ order.image }}" alt="{{ order.name }}" height="140"></button>
+		</div>
+	</div>
+	<h3>Choose a Family:</h3>
+	<div class="button-row">
+		<div class="button-block" ng-repeat="family in fc.families">
+			<button><img ng-src="http://fishbase.org/identification/{{ family.image }}" alt="{{ family.name }}" height="140"></button>
 		</div>
 	</div>
 </div>
