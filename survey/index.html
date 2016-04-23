@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="fishApp">
+<head>
+		<title>Survey</title>
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="main.js"></script>
+		<script src="factories.js"></script>
+		<script src="controllers.js"></script>
+</head>
+<body ng-controller="questionsController as qc">
+
+{{ qc.hello }}
+
+<div id="content">
+	<h3 ng-bind="qc.question.text"></h3>
+	<div id="options">
+		<div ng-repeat="opt in qc.options">
+			<p ng-bind="opt.text"></p>
+			<img ng-src="{{ opt.image }}" alt="">
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
