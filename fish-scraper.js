@@ -11,57 +11,73 @@ function fishConstructor ()
         All Fish Classes
     */
     {
-        scraperjs.StaticScraper.create("http://fishbase.org/identification/ClassList.php")
-        .scrape(function($) {
+        var link = "http://fishbase.org/identification/ClassList.php";
+        console.log(link);
+        scraperjs.StaticScraper.create(link)
+        .scrape(function ($) {
             return $("img").map(function () {
                 var img = $(this).attr("src");
                 var name = $(this).attr("alt");
                 var form = $(this).parent().next();  // All Children Of Form
                 var cls = form.find(":input[name='classnum']").val();
-                return { img: img, name: name, class: cls };
+                return { image: img, name: name, class: cls };
             }).get();
         })
         .then(callback);
     };
-    FishScraper.orders = function (classnum, callback)
+    FishScraper.ordersByClassId = function (classId, callback)
     /*
         All Fish Orders (Search By Class)  
     */
     {
-        scraperjs.StaticScraper.create("http://fishbase.org/identification/OrderList.php?classnum=" + classnum)
-        .scrape(function($) {
-            return $("img").map(function() {
+        var link = "http://fishbase.org/identification/OrderList.php?classnum=" + classId;
+        console.log(link);
+        scraperjs.StaticScraper.create(link)
+        .scrape(function ($) {
+            return $("img").map(function () {
                 var link = $(this).parent().attr("href");
                 var ord = getParameterByName("ordnum", link);
                 var cls = getParameterByName("classnum", link);
                 var src = $(this).attr("src");
                 var name = $(this).attr("alt");
-                return { src: src, link: link, ord: ord, class: cls, name: name };
+                return { image: src, ord: ord, class: cls, name: name };
             }).get();
         })
-        .then(function(images) {
-            console.log(images);
-        });
+        .then(callback);
     };
-    FishScraper.family = function (ordernum, callback)
+    FishScraper.familiesByOrderId = function (orderId, callback)
     /*
         All Fish Family (Search By Order)
     */
     {
-        scraperjs.StaticScraper.create("http://fishbase.org/identification/OrderList.php?ordnum=" + ordernum)
-        .scrape(function($) {
-            return $("img").map(function() {
-                var link = $(this).parent().attr("href");
-                var ord = getParameterByName("ordnum", link);
-                var cls = getParameterByName("classnum", link);
+        var link = "http://fishbase.org/identification/FamiliesList.php?ordnum=" + orderId;
+        console.log(link);
+        scraperjs.StaticScraper.create(link)
+        .scrape(function ($) {
+            return $("img").map(function () {
+                var a = $(this).parent().next();
+                var link = a.attr("href");
+                var family = getParameterByName("famcode", link);
+                var name = a.text().trim();
                 var src = $(this).attr("src");
-                var name = $(this).attr("alt");
-                return { src: src, link: link, ord: ord, class: cls, name: name };
+                return { image: src, family: family, name: name };
             }).get();
         })
-        .then(function(images) {
-            console.log(images);
-        });
+        .then(callback);
+    };
+    FishScraper.speciesByFamilyId = function (familyId, callback)
+    {
+        var link = "http://fishbase.org/identification/SpeciesList.php?famcode=" + familyId;
+        console.log(link);
+        scraperjs.StaticScraper.create(link)
+        .scrape(function ($) {
+            return $("span img").map(function () {
+                var src = $(this).attr("src");
+                var name = $(this).parent().parent().parent().parent().next().find("i");
+                return { image: src, name: name.html() };
+            }).get();
+        })
+        .then(callback);
     };
 }
 
