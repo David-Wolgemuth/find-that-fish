@@ -13,22 +13,28 @@
 {{ fc.hello }}
 
 <div id="content">
-	<h3>Choose a Class:</h3>
+	<h3>Choose a Class: <small ng-bind="fc.class.name"></small></h3>
 	<div class="button-row">
 		<div class="button-block" ng-repeat="cls in fc.classes">
-			<button ng-click="fc.clickedClass(cls)"><img ng-src="http://fishbase.org/identification/{{ cls.image }}" alt="{{ cls.name }}" height="140"></button>
+			<button ng-click="fc.clickedClass(cls)"><img ng-src="http://fishbase.ca/identification/{{ cls.image }}" alt="{{ cls.name }}" height="140"></button>
 		</div>
 	</div>
-	<h3>Choose an Order:</h3>
+	<h3>Choose an Order: <small ng-bind="fc.order.name"></small></h3>
 	<div class="button-row">
 		<div class="button-block" ng-repeat="order in fc.orders">
-			<button><img ng-src="http://fishbase.org/identification/{{ order.image }}" alt="{{ order.name }}" height="140"></button>
+			<button ng-click = "fc.clickedOrder(order)"><img ng-src="http://fishbase.ca/identification/{{ order.image }}" alt="{{ order.name }}" height="140"></button>
 		</div>
 	</div>
-	<h3>Choose a Family:</h3>
+	<h3>Choose a Family: <small ng-bind="fc.family.name"></small></h3>
 	<div class="button-row">
 		<div class="button-block" ng-repeat="family in fc.families">
-			<button><img ng-src="http://fishbase.org/identification/{{ family.image }}" alt="{{ family.name }}" height="140"></button>
+			<button ng-click = "fc.clickedFamily(family)"><img ng-src="http://fishbase.ca/identification/{{ family.image }}" alt="{{ family.name }}" height="140"></button>
+		</div>
+	</div>
+	<h3>Choose a Species: <small ng-bind="fc.currentSpecies.name"></small></h3>
+	<div class="button-row">
+		<div class="button-block" ng-repeat="species in fc.species">
+			<button ng-click="fc.clickedSpecies(species)"><img ng-src="http://fishbase.ca{{ species.image }}" alt="{{ species.name }}" height="140"></button>
 		</div>
 	</div>
 </div>

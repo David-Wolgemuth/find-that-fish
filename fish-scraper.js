@@ -11,7 +11,7 @@ function fishConstructor ()
         All Fish Classes
     */
     {
-        var link = "http://fishbase.org/identification/ClassList.php";
+        var link = "http://fishbase.ca/identification/ClassList.php";
         console.log(link);
         scraperjs.StaticScraper.create(link)
         .scrape(function ($) {
@@ -30,17 +30,17 @@ function fishConstructor ()
         All Fish Orders (Search By Class)  
     */
     {
-        var link = "http://fishbase.org/identification/OrderList.php?classnum=" + classId;
+        var link = "http://fishbase.ca/identification/OrderList.php?classnum=" + classId;
         console.log(link);
         scraperjs.StaticScraper.create(link)
         .scrape(function ($) {
             return $("img").map(function () {
-                var link = $(this).parent().attr("href");
-                var ord = getParameterByName("ordnum", link);
-                var cls = getParameterByName("classnum", link);
                 var src = $(this).attr("src");
                 var name = $(this).attr("alt");
-                return { image: src, id: ord, class: cls, name: name };
+
+                var data = src.split("_");
+                var id = data[data.length - 1].split(".")[0];
+                return { image: src, id: id, name: name };
             }).get();
         })
         .then(callback);
@@ -50,16 +50,20 @@ function fishConstructor ()
         All Fish Family (Search By Order)
     */
     {
-        var link = "http://fishbase.org/identification/FamiliesList.php?ordnum=" + orderId;
+        var link = "http://www.fishbase.ca/identification/familieslist.php?ordnum=" + orderId;
         console.log(link);
         scraperjs.StaticScraper.create(link)
         .scrape(function ($) {
             return $("img").map(function () {
+                var src = $(this).attr("src");
+
+                console.log("IMAGE:", src)
+
                 var a = $(this).parent().next();
                 var link = a.attr("href");
                 var family = getParameterByName("famcode", link);
                 var name = a.text().trim();
-                var src = $(this).attr("src");
+                
                 return { image: src, id: family, name: name };
             }).get();
         })
@@ -67,7 +71,7 @@ function fishConstructor ()
     };
     FishScraper.speciesByFamilyId = function (familyId, callback)
     {
-        var link = "http://fishbase.org/identification/SpeciesList.php?famcode=" + familyId;
+        var link = "http://fishbase.ca/identification/SpeciesList.php?famcode=" + familyId;
         console.log(link);
         scraperjs.StaticScraper.create(link)
         .scrape(function ($) {

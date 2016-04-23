@@ -20,5 +20,12 @@ fishModule.factory("fishFactory", function($http){
 			callback(families);
 		})
 	}
+
+	factory.speciesByFamilyId = function(id, callback){
+		$http.get("/species?family=" + id).then(function(res){
+			var species = res.data;
+			callback(species);
+		})
+	}
 	return factory;
 })

@@ -32,7 +32,7 @@ app.get("/families", function (req, res) {
 
 app.get("/species", function (req, res) {
     var id = req.query.family;
-    fish.speciesByOrderId(id, function (species) {
+    fish.speciesByFamilyId(id, function (species) {
         res.json(species);
     });
 });
