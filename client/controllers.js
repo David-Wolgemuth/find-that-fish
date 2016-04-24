@@ -84,13 +84,3 @@ fishModule.controller("fishController", function(fishFactory) {
 
 });
 
-// window.onclick = function (event)
-// {
-//     console.log("Yo");
-//     var previewModal = document.getElementById("preview-modal");
-//     var content = document.getElementById("preview-modal-content");
-//     if (event.target == previewModal || event.target == content) {
-//         console.log("Hit it");
-//         previewModal.style.visibility = "hidden";
-//     }
-// };
