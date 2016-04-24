@@ -1,14 +1,81 @@
+/*
+	orange: 	F38630
+	white: 		DEDEDC
+	light-blue: 082A84
+	blue:		091D5C
 
+
+
+
+*/
+
+*{
+	margin: 0px;
+	padding: 0px;
+	font-family: arial;
+}
+
+html, body, #content {
+	width: 100%;
+	height: 100%;
+}
+
+h1, h3, p {
+	font-style: normal;
+	color: #091D5C;
+	margin: 4px;
+	text-align: center;
+
+}
+#splash img {
+	display: block;
+	margin: auto;
+}
+
+small {
+	font-style: italic;
+}
+
+body {
+	/*background-color: #091D5C;*/
+}
 
 .button-row {
-	width: 99%;
+	width: 100%;
 	display: block;
 	height: 160px;
 	overflow-x: auto;
 	overflow-y: hidden;
 	white-space: nowrap;
+
+	padding: 24px 0 320px 0;
+	margin: 24px 0;
+
+	background-color: #DEDEDC;
+	border-top: 1px solid #091D5C;
+	border-bottom: 1px solid #091D5C;
 }
+
+
 .button-block {
 	display: inline-block;
 	margin-left: 1%;
+	/*padding-top:px; */
 }
+
+button {
+	padding: 8px;
+}
+
+img {
+	/*border: 2px solid #022A68;*/
+}
+
+button, button img {
+	background-color:#091D5C;
+	/*border-radius: 20px;*/
+}
+button.selected {
+	background-color: #F38630;
+}
+
