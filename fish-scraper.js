@@ -56,14 +56,10 @@ function fishConstructor ()
         .scrape(function ($) {
             return $("img").map(function () {
                 var src = $(this).attr("src");
-
-                console.log("IMAGE:", src)
-
                 var a = $(this).parent().next();
                 var link = a.attr("href");
                 var family = getParameterByName("famcode", link);
                 var name = a.text().trim();
-                
                 return { image: src, id: family, name: name };
             }).get();
         })
@@ -76,9 +72,12 @@ function fishConstructor ()
         scraperjs.StaticScraper.create(link)
         .scrape(function ($) {
             return $("span img").map(function () {
-                var src = $(this).attr("src");
+                var image = $(this).attr("src");
                 var name = $(this).parent().parent().parent().parent().next().find("i");
-                return { image: src, name: name.html() };
+                var thumbnail = $(this).parent().prev().attr("src");
+                var obj = { image: image, thumbnail: thumbnail, name: name.html() };
+                console.log("OBJECT:", obj)
+                return obj;
             }).get();
         })
         .then(callback);

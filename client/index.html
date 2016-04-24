@@ -34,7 +34,7 @@
 	<h3>Choose a Species: <small ng-bind="fc.currentSpecies.name"></small></h3>
 	<div class="button-row">
 		<div class="button-block" ng-repeat="species in fc.species">
-			<button ng-click="fc.clickedSpecies(species)"><img ng-src="http://fishbase.ca{{ species.image }}" alt="{{ species.name }}" height="140"></button>
+			<button ng-click="fc.clickedSpecies(species)"><img ng-src="http://fishbase.ca{{ species.thumbnail }}" alt="{{ species.name }}" height="140"></button>
 		</div>
 	</div>
 </div>
