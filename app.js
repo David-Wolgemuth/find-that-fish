@@ -6,7 +6,9 @@ var path = require("path");
 var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
 app.use(express.static(path.join(__dirname + "/client")));
+app.use(express.static(path.join(__dirname + "/bower_components")));
 
 var fish = require("./fish-scraper.js");
 
