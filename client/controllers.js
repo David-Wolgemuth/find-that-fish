@@ -12,7 +12,6 @@ fishModule.controller("fishController", function(fishFactory) {
     ctrl.family = {};
     ctrl.species = {};
 
-
     fishFactory.classes(function (classes) {
         ctrl.classes = classes;
     });
@@ -27,6 +26,8 @@ fishModule.controller("fishController", function(fishFactory) {
         ctrl.orders = [];
         ctrl.families = [];
         ctrl.species = [];
+
+        scrollTo("#orders");
         fishFactory.ordersByClassId(cls.id, function (orders) {
             ctrl.orders = orders;
         });
@@ -40,6 +41,8 @@ fishModule.controller("fishController", function(fishFactory) {
 
         ctrl.families = [];
         ctrl.species = [];
+
+        scrollTo("#families");
         fishFactory.familiesByOrderId(order.id, function(families) {
             ctrl.families = families;
         })
@@ -51,6 +54,8 @@ fishModule.controller("fishController", function(fishFactory) {
         ctrl.species = {};
 
         ctrl.species = [];
+
+        scrollTo("#species");
         fishFactory.speciesByFamilyId(family.id, function(species) {
             ctrl.species = species;
         })
@@ -60,3 +65,7 @@ fishModule.controller("fishController", function(fishFactory) {
         ctrl.currentSpecies = species;
     }
 });
+
+function scrollTo (anchor) {
+    $("html, body").animate({ scrollTop: $(anchor).prev().offset().top }, 1000);
+}
