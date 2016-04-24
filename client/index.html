@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="fishApp">
 <head>
-		<title>Survey</title>
+		<title>Find That Fish</title>
 		<script src="bower_components/angular/angular.js"></script>
 		<script src="main.js"></script>
 		<script src="factories.js"></script>
@@ -11,6 +11,14 @@
 <body ng-controller="fishController as fc">
 
 <div id="content">
+
+	<div id="splash">
+		<h1>Find That Fish</h1>
+		<img src="3-eyes.jpg">
+	</div>
+	
+
+
 	<h3>Choose a Class: <small ng-bind="fc.class.name"></small></h3>
 	<div class="button-row">
 		<div class="button-block" ng-repeat="cls in fc.classes">

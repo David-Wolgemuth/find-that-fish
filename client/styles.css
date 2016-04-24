@@ -1,8 +1,8 @@
 /*
 	orange: 	F38630
-	white: 		E0E3CC
-	light-blue: A7DBDB
-	blue:		35404F
+	white: 		DEDEDC
+	light-blue: 082A84
+	blue:		091D5C
 
 
 
@@ -12,7 +12,7 @@
 *{
 	margin: 0px;
 	padding: 0px;
-	font-family: helvetica;
+	font-family: arial;
 }
 
 html, body, #content {
@@ -20,17 +20,24 @@ html, body, #content {
 	height: 100%;
 }
 
-h3, p {
-	color: #E0E3CC;
-	margin: 2%;
+h1, h3, p {
+	font-style: normal;
+	color: #091D5C;
+	margin: 4px;
 	text-align: center;
+
 }
+#splash img {
+	display: block;
+	margin: auto;
+}
+
 small {
 	font-style: italic;
 }
 
 body {
-	background-color: #35404F;
+	/*background-color: #091D5C;*/
 }
 
 .button-row {
@@ -40,9 +47,15 @@ body {
 	overflow-x: auto;
 	overflow-y: hidden;
 	white-space: nowrap;
-	padding:2%;
-	background-color: #E0E3CC;
+
+	padding: 24px 0 320px 0;
+	margin: 24px 0;
+
+	background-color: #DEDEDC;
+	border-top: 1px solid #091D5C;
+	border-bottom: 1px solid #091D5C;
 }
+
 
 .button-block {
 	display: inline-block;
@@ -52,7 +65,6 @@ body {
 
 button {
 	padding: 8px;
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c5deea', endColorstr='#066dab',GradientType=0 ); /* IE6-9 */
 }
 
 img {
@@ -60,7 +72,7 @@ img {
 }
 
 button, button img {
-	background-color:#35404F;
+	background-color:#091D5C;
 	/*border-radius: 20px;*/
 }
 button.selected {
