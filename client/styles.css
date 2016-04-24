@@ -118,5 +118,10 @@ button.selected {
 	background-color: #F38630;
 }
 
+.previous {
+/*	margin-left: 0px;
+*/	width:25px;
+	float: left;
+}
 
 

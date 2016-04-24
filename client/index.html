@@ -31,7 +31,7 @@
 		</div>
 	</div>
 	<div id="orders" class="button-row">
-		<h3>Choose an Order: <small ng-bind="fc.order.name"></small></h3>
+		<h3><img class="previous" src="previous.png" ng-click="fc.scrollTo('#classes')">Choose an Order: <small ng-bind="fc.order.name"></small></h3>
 		<div class="slider">
 			<div class="button-block" ng-repeat="order in fc.orders">
 				<button ng-click = "fc.clickedOrder(order)" ng-class="{selected: order.id==fc.order.id}"><img ng-src="http://fishbase.ca/identification/{{ order.image }}" alt="{{ order.name }}" height="140"></button>
@@ -39,7 +39,7 @@
 		</div>
 	</div>
 	<div id="families" class="button-row">
-		<h3>Choose a Family: <small ng-bind="fc.family.name"></small></h3>
+		<h3><img class="previous" src="previous.png" ng-click="fc.scrollTo('#orders')">Choose a Family: <small ng-bind="fc.family.name"></small></h3>
 		<div class="slider">
 			<div class="button-block" ng-repeat="family in fc.families">
 				<button ng-click = "fc.clickedFamily(family)" ng-class="{selected: family.id==fc.family.id}"><img ng-src="http://fishbase.ca/identification/{{ family.image }}" alt="{{ family.name }}" height="140"></button>
@@ -47,7 +47,7 @@
 		</div>
 	</div>
 	<div id="species" class="button-row">
-		<h3>Choose a Species: <small ng-bind="fc.currentSpecies.name"></small></h3>
+		<h3><img class="previous" src="previous.png" ng-click="fc.scrollTo('#families')">Choose a Species: <small ng-bind="fc.currentSpecies.name"></small></h3>
 		<div class="slider">
 			<div class="button-block" ng-repeat="species in fc.species">
 				<button ng-click="fc.clickedSpecies(species)" ng-class="{selected: species.id==fc.currentSpecies.id}">
