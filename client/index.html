@@ -58,6 +58,15 @@
 	</div>
 </div>
 
+<div ng-click="fc.hideModal()" id="preview-modal">
+	<div id="preview-modal-content">
+		<img ng-src="http://fishbase.ca{{ fc.currentSpecies.image }}" alt="{{ fc.currentSpecies.name }}">
+		<h3 ng-bind="fc.currentSpecies.sciName"></h3>
+		<h2 ng-bind="fc.currentSpecies.commonName"></h2>
+		<img ng-if="!!fc.currentSpecies.map" ng-src="http://fishbase.ca{{ fc.currentSpecies.map }}" alt="Map">
+	</div>
+</div>
+
 </body>
 
 <script src="bower_components/jquery/dist/jquery.js"></script>

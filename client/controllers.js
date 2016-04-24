@@ -63,14 +63,34 @@ fishModule.controller("fishController", function(fishFactory) {
 
     ctrl.clickedSpecies = function (species) {
         ctrl.currentSpecies = species;
-
+        $("#preview-modal").css({ visibility: "visible" });
         fishFactory.speciesById(species.id, function (data) {
-            console.log(data);
+            if (data.id == ctrl.currentSpecies.id) {
+                for (attr in data) {
+                    ctrl.currentSpecies[attr] = data[attr];
+                }
+            }
         });
     };
 
     ctrl.scrollTo = function (anchor) {
         $("html, body").animate({ scrollTop: $(anchor).offset().top }, 1000);
     };
+    ctrl.hideModal = function()
+    {
+        var previewModal = document.getElementById("preview-modal");
+        previewModal.style.visibility = "hidden";
+    };
 
 });
+
+// window.onclick = function (event)
+// {
+//     console.log("Yo");
+//     var previewModal = document.getElementById("preview-modal");
+//     var content = document.getElementById("preview-modal-content");
+//     if (event.target == previewModal || event.target == content) {
+//         console.log("Hit it");
+//         previewModal.style.visibility = "hidden";
+//     }
+// };
