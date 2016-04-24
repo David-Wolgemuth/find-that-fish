@@ -19,17 +19,48 @@ html, body, #content {
 	width: 100%;
 	height: 100%;
 }
+h1 {
+	font-size: 48px;
+}
 
 h1, h3, p {
-	font-style: normal;
 	color: #091D5C;
 	margin: 4px;
 	text-align: center;
 
 }
-#splash img {
+#splash {
+	padding: 48px;
+}
+
+#splash * {
 	display: block;
-	margin: auto;
+	margin: 4px auto;
+}
+#splash button {
+	margin-top: 32px;
+	color: #091D5C;
+	background-color: white;
+	font-size: 32px;
+}
+#splash .fishbase{
+	font-size: 10px;
+	width: 100px;
+	vertical-align: bottom;
+}
+.fishbase p{
+	/*display: inline-block;*/
+}
+#splash img.fishbase{
+	width: 100px;
+	/*display: inline-block;*/
+}
+#splash{
+	background-color: #091D5C;
+	padding-bottom: 30%;
+}
+#splash h1, p{
+	color: white;
 }
 
 small {
@@ -78,4 +109,6 @@ button, button img {
 button.selected {
 	background-color: #F38630;
 }
+
+
 

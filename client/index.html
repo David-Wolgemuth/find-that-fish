@@ -14,12 +14,15 @@
 
 	<div id="splash">
 		<h1>Find That Fish</h1>
-		<img src="3-eyes.jpg">
+		<img src="three_eyed_fish.png">
+		<p class = "fishbase">Powered By:</p>
+		<img class = "fishbase" src = "fishbase.gif">
+		<button>Get Started!</button>
 	</div>
 	
 
 
-	<h3>Choose a Class: <small ng-bind="fc.class.name"></small></h3>
+	<h3 id = "first">Choose a Class: <small ng-bind="fc.class.name"></small></h3>
 	<div class="button-row">
 		<div class="button-block" ng-repeat="cls in fc.classes">
 			<button ng-click="fc.clickedClass(cls)" ng-class="{selected: cls.id==fc.class.id}">
