@@ -63,6 +63,10 @@ fishModule.controller("fishController", function(fishFactory) {
 
     ctrl.clickedSpecies = function (species) {
         ctrl.currentSpecies = species;
+
+        fishFactory.speciesById(species.id, function (data) {
+            console.log(data);
+        });
     };
 
     ctrl.scrollTo = function (anchor) {

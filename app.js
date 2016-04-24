@@ -30,6 +30,13 @@ app.get("/families", function (req, res) {
     });
 });
 
+app.get("/species/:id", function (req, res) {
+    var id = req.params.id;
+    fish.speciesById(id, function (data) {
+        res.json(data);
+    });
+});
+
 app.get("/species", function (req, res) {
     var id = req.query.family;
     fish.speciesByFamilyId(id, function (species) {

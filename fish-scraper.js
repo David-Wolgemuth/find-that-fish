@@ -75,10 +75,41 @@ function fishConstructor ()
                 var image = $(this).attr("src");
                 var name = $(this).parent().parent().parent().parent().next().find("i");
                 var thumbnail = $(this).parent().prev().attr("src");
-                var obj = { image: image, thumbnail: thumbnail, name: name.html() };
+                var href = $(this).parent().parent().attr("href");
+                var id = getParameterByName("ID", href);
+
+                var obj = { image: image, thumbnail: thumbnail, name: name.html(), id: id };
                 console.log("OBJECT:", obj)
                 return obj;
             }).get();
+        })
+        .then(callback);
+    };
+    FishScraper.speciesById = function (id, callback)
+    {
+        var link = "http://fishbase.ca/summary/SpeciesSummary.php?id=" + id;
+        console.log(link);
+        scraperjs.StaticScraper.create(link)
+        .scrape(function ($) {
+            var map = $("#pix").attr("src");
+
+            var bio = $("h1:contains(Biology)").parent().parent().next().first().text();
+            if (bio) {
+                bio = bio.trim();
+            }
+
+            var title = $("title").text().split(":");
+            var names = title[0].split(",");
+            if (names[0]) {
+                var sciName = names[0].trim();
+            }
+            if (names[1]) {
+                var commonName = names[1].trim();
+            }
+            if (title[1]) {
+                var types = title[1].trim();
+            }
+            return { id: id, bio: bio, map: map, commonName: commonName, sciName: sciName, types: types };
         })
         .then(callback);
     };
