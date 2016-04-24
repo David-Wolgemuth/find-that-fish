@@ -52,7 +52,7 @@ fishModule.controller("fishController", function(fishFactory) {
 
         ctrl.species = [];
         fishFactory.speciesByFamilyId(family.id, function(species) {
-            ctrl.species = species;
+            ctrl.scpecies = species;
         })
     }
 
