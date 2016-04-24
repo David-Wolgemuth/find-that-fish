@@ -19,17 +19,50 @@ html, body, #content {
 	width: 100%;
 	height: 100%;
 }
+h1 {
+	font-size: 48px;
+}
 
 h1, h3, p {
-	font-style: normal;
 	color: #091D5C;
 	margin: 4px;
 	text-align: center;
-
 }
-#splash img {
+
+#splash {
+	padding: 48px;
+}
+
+#splash * {
 	display: block;
-	margin: auto;
+	margin: 4px auto;
+}
+#splash button {
+	margin-top: 42px;
+	color: #091D5C;
+	font-weight: bold;
+	padding: 18px;
+	background-color: white;
+	font-size: 38px;
+}
+#splash .fishbase{
+	font-size: 10px;
+	width: 100px;
+	vertical-align: bottom;
+}
+.fishbase p{
+	/*display: inline-block;*/
+}
+#splash img.fishbase{
+	width: 100px;
+	/*display: inline-block;*/
+}
+#splash{
+	background-color: #091D5C;
+	padding-bottom: 30%;
+}
+#splash h1, p{
+	color: white;
 }
 
 small {
@@ -43,20 +76,25 @@ body {
 .button-row {
 	width: 100%;
 	display: block;
+	background-color: #DEDEDC;
+	padding-bottom: 60px; 
+}
+
+.slider {
 	height: 160px;
 	overflow-x: auto;
 	overflow-y: hidden;
 	white-space: nowrap;
-
-	padding: 24px 0 320px 0;
-	margin: 24px 0;
-
-	background-color: #DEDEDC;
-	border-top: 1px solid #091D5C;
-	border-bottom: 1px solid #091D5C;
 }
 
-
+.button-row h3 {
+	margin: 0 0 12px 0;
+	padding: 24px;
+	background-color: white;
+	border-top: 1px solid #091D5C;
+	border-bottom: 1px solid #091D5C;
+	margin-bottom: 60px;
+}
 .button-block {
 	display: inline-block;
 	margin-left: 1%;
@@ -65,6 +103,7 @@ body {
 
 button {
 	padding: 8px;
+
 }
 
 img {
@@ -78,4 +117,6 @@ button, button img {
 button.selected {
 	background-color: #F38630;
 }
+
+
 
